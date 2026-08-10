@@ -41,6 +41,11 @@ h1, h2, h3, h4, h5, h6 {
   color: #022c22;
 }
 
+p {
+  color: #044e3b;
+  font-weight: 700;
+}
+
 body.dark-theme h1,
 body.dark-theme h2,
 body.dark-theme h3,
@@ -48,6 +53,10 @@ body.dark-theme h4,
 body.dark-theme h5,
 body.dark-theme h6 {
   color: #ffffff;
+}
+
+body.dark-theme p {
+  color: #ecfdf5;
 }
 
 /* Alive Green Glassmorphism Panel Cards */

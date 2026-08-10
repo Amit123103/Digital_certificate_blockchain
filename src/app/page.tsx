@@ -91,14 +91,14 @@ export default function HomePage() {
           Alive Green Decentralized Supply Chain & Verification System
         </div>
 
-        <h1 className="text-5xl sm:text-7xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-tight">
+        <h1 className="text-5xl sm:text-7xl font-black tracking-tight text-emerald-950 dark:text-white leading-tight">
           Trust. Track. Trade.{" "}
-          <span className="bg-gradient-to-r from-emerald-600 via-teal-500 to-green-400 bg-clip-text text-transparent">
+          <span className="bg-gradient-to-r from-emerald-600 via-teal-600 to-green-500 bg-clip-text text-transparent glow-text">
             Govern.
           </span>
         </h1>
 
-        <p className="text-lg sm:text-xl text-slate-800 dark:text-slate-200 max-w-2xl mx-auto leading-relaxed font-bold">
+        <p className="text-lg sm:text-xl text-emerald-900 dark:text-emerald-100 max-w-2xl mx-auto leading-relaxed font-extrabold">
           A full-stack enterprise blockchain platform establishing tamper-resistant product authenticity, end-to-end custodial provenance, tokenization, decentralized trading, collateral lending, and community DAO governance.
         </p>
 
