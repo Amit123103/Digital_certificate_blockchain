@@ -5,16 +5,17 @@
 @tailwind utilities;
 
 :root {
-  --bg-gradient: linear-gradient(135deg, #060913 0%, #0c1427 40%, #101b33 70%, #060913 100%);
+  --bg-gradient: linear-gradient(135deg, #070d1e 0%, #0f172a 35%, #1e1b4b 70%, #090e1a 100%);
 }
 
 body {
-  background: #060913;
+  background: #070d1e;
   background-image: 
-    radial-gradient(circle at 15% 15%, rgba(37, 99, 235, 0.25) 0%, transparent 40%),
-    radial-gradient(circle at 85% 20%, rgba(168, 85, 247, 0.22) 0%, transparent 40%),
-    radial-gradient(circle at 50% 75%, rgba(16, 185, 129, 0.18) 0%, transparent 50%),
-    radial-gradient(circle at 80% 85%, rgba(236, 72, 153, 0.15) 0%, transparent 45%);
+    radial-gradient(circle at 10% 10%, rgba(59, 130, 246, 0.35) 0%, transparent 45%),
+    radial-gradient(circle at 90% 15%, rgba(139, 92, 246, 0.35) 0%, transparent 45%),
+    radial-gradient(circle at 50% 50%, rgba(6, 182, 212, 0.22) 0%, transparent 55%),
+    radial-gradient(circle at 80% 80%, rgba(236, 72, 153, 0.22) 0%, transparent 50%),
+    radial-gradient(circle at 20% 85%, rgba(16, 185, 129, 0.20) 0%, transparent 45%);
   background-attachment: fixed;
   color: #f8fafc;
   font-family: 'Outfit', sans-serif;
