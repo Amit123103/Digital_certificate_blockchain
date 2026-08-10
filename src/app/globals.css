@@ -1,8 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700;800&display=swap');
-
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700;800&display=swap');
 
 :root {
   --bg-gradient: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 35%, #bbf7d0 70%, #ffffff 100%);
@@ -11,13 +11,13 @@
 body {
   background: #f0fdf4;
   background-image: 
-    radial-gradient(circle at 10% 10%, rgba(16, 185, 129, 0.22) 0%, transparent 45%),
-    radial-gradient(circle at 90% 15%, rgba(52, 211, 153, 0.22) 0%, transparent 45%),
-    radial-gradient(circle at 50% 50%, rgba(5, 150, 105, 0.15) 0%, transparent 55%),
-    radial-gradient(circle at 80% 80%, rgba(16, 185, 129, 0.18) 0%, transparent 50%),
-    radial-gradient(circle at 20% 85%, rgba(110, 231, 183, 0.20) 0%, transparent 45%);
+    radial-gradient(circle at 10% 10%, rgba(16, 185, 129, 0.25) 0%, transparent 45%),
+    radial-gradient(circle at 90% 15%, rgba(52, 211, 153, 0.25) 0%, transparent 45%),
+    radial-gradient(circle at 50% 50%, rgba(5, 150, 105, 0.20) 0%, transparent 55%),
+    radial-gradient(circle at 80% 80%, rgba(16, 185, 129, 0.20) 0%, transparent 50%),
+    radial-gradient(circle at 20% 85%, rgba(110, 231, 183, 0.22) 0%, transparent 45%);
   background-attachment: fixed;
-  color: #064e3b;
+  color: #022c22;
   font-family: 'Outfit', sans-serif;
   min-height: 100vh;
 }
@@ -31,26 +31,37 @@ body.dark-theme {
     radial-gradient(circle at 50% 50%, rgba(5, 150, 105, 0.30) 0%, transparent 55%),
     radial-gradient(circle at 80% 80%, rgba(16, 185, 129, 0.30) 0%, transparent 50%),
     radial-gradient(circle at 20% 85%, rgba(110, 231, 183, 0.25) 0%, transparent 45%);
-  color: #ecfdf5;
+  color: #f0fdf4;
 }
 
+/* Universal Typography High-Contrast Legibility */
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Space Grotesk', sans-serif;
   letter-spacing: -0.02em;
+  color: #022c22;
+}
+
+body.dark-theme h1,
+body.dark-theme h2,
+body.dark-theme h3,
+body.dark-theme h4,
+body.dark-theme h5,
+body.dark-theme h6 {
+  color: #ffffff;
 }
 
 /* Alive Green Glassmorphism Panel Cards */
 .glass-panel {
-  background: rgba(255, 255, 255, 0.94);
+  background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(16, 185, 129, 0.3);
-  box-shadow: 0 10px 35px -5px rgba(5, 150, 105, 0.12), inset 0 1px 0 0 rgba(255, 255, 255, 1);
+  border: 1.5px solid rgba(16, 185, 129, 0.4);
+  box-shadow: 0 10px 35px -5px rgba(5, 150, 105, 0.15), inset 0 1px 0 0 rgba(255, 255, 255, 1);
 }
 
 body.dark-theme .glass-panel {
-  background: rgba(6, 44, 30, 0.90);
-  border: 1px solid rgba(52, 211, 153, 0.25);
+  background: rgba(6, 44, 30, 0.92);
+  border: 1.5px solid rgba(52, 211, 153, 0.35);
   box-shadow: 0 12px 45px -10px rgba(0, 0, 0, 0.7), inset 0 1px 0 0 rgba(52, 211, 153, 0.2);
 }
 
@@ -60,22 +71,47 @@ body.dark-theme .glass-panel {
 
 .glass-panel-hover:hover {
   background: #ffffff;
-  border-color: rgba(16, 185, 129, 0.8);
+  border-color: rgba(16, 185, 129, 0.9);
   transform: translateY(-4px);
-  box-shadow: 0 20px 45px -10px rgba(16, 185, 129, 0.35);
+  box-shadow: 0 20px 45px -10px rgba(16, 185, 129, 0.4);
 }
 
 body.dark-theme .glass-panel-hover:hover {
   background: rgba(10, 61, 42, 0.95);
-  border-color: rgba(52, 211, 153, 0.8);
-  box-shadow: 0 22px 50px -15px rgba(16, 185, 129, 0.5);
+  border-color: rgba(52, 211, 153, 0.9);
+  box-shadow: 0 22px 50px -15px rgba(16, 185, 129, 0.55);
+}
+
+/* Form Inputs & Controls Readability */
+input, select, textarea {
+  color: #022c22 !important;
+  background-color: #ffffff !important;
+  border: 1.5px solid #a7f3d0 !important;
+}
+
+body.dark-theme input,
+body.dark-theme select,
+body.dark-theme textarea {
+  color: #ffffff !important;
+  background-color: #022c22 !important;
+  border: 1.5px solid #065f46 !important;
+}
+
+input::placeholder, textarea::placeholder {
+  color: #059669 !important;
+}
+
+body.dark-theme input::placeholder, 
+body.dark-theme textarea::placeholder {
+  color: #6ee7b7 !important;
 }
 
 /* Alive Green Badges */
 .badge-verified {
-  background: linear-gradient(135deg, rgba(16, 185, 129, 0.2) 0%, rgba(5, 150, 105, 0.3) 100%);
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.25) 0%, rgba(5, 150, 105, 0.35) 100%);
   color: #047857;
-  border: 1px solid rgba(16, 185, 129, 0.8);
+  border: 1.5px solid rgba(16, 185, 129, 0.9);
+  font-weight: 800;
 }
 
 body.dark-theme .badge-verified {
@@ -83,9 +119,10 @@ body.dark-theme .badge-verified {
 }
 
 .badge-revoked {
-  background: linear-gradient(135deg, rgba(239, 68, 68, 0.2) 0%, rgba(220, 38, 38, 0.3) 100%);
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.25) 0%, rgba(220, 38, 38, 0.35) 100%);
   color: #b91c1c;
-  border: 1px solid rgba(239, 68, 68, 0.8);
+  border: 1.5px solid rgba(239, 68, 68, 0.9);
+  font-weight: 800;
 }
 
 body.dark-theme .badge-revoked {
@@ -93,9 +130,10 @@ body.dark-theme .badge-revoked {
 }
 
 .badge-in-progress {
-  background: linear-gradient(135deg, rgba(245, 158, 11, 0.2) 0%, rgba(217, 119, 6, 0.3) 100%);
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.25) 0%, rgba(217, 119, 6, 0.35) 100%);
   color: #b45309;
-  border: 1px solid rgba(245, 158, 11, 0.8);
+  border: 1.5px solid rgba(245, 158, 11, 0.9);
+  font-weight: 800;
 }
 
 body.dark-theme .badge-in-progress {
@@ -111,6 +149,6 @@ body.dark-theme .badge-in-progress {
   background: #dcfce7;
 }
 ::-webkit-scrollbar-thumb {
-  background: #34d399;
+  background: #10b981;
   border-radius: 6px;
 }
