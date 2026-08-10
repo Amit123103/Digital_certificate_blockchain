@@ -113,28 +113,28 @@ export default function LandingPage() {
 
         <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
           <Link
-            href="/marketplace"
-            className="flex items-center gap-2 px-6 py-3.5 rounded-2xl bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-700 hover:from-blue-500 hover:to-indigo-500 text-white font-bold shadow-xl shadow-blue-600/30 transition transform hover:-translate-y-0.5"
+            href="/login"
+            className="flex items-center gap-2.5 px-6 py-3.5 rounded-2xl bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white font-bold shadow-xl shadow-blue-600/30 transition transform hover:-translate-y-0.5"
           >
-            <ShoppingBag className="w-5 h-5" />
+            <Lock className="w-5 h-5" />
+            Sign In (Google / Apple / Web3)
+          </Link>
+
+          <Link
+            href="/marketplace"
+            className="flex items-center gap-2 px-6 py-3.5 rounded-2xl glass-panel hover:border-blue-500 font-bold border border-slate-300 dark:border-slate-700 transition"
+          >
+            <ShoppingBag className="w-5 h-5 text-indigo-500" />
             Explore Marketplace
           </Link>
 
           <Link
             href="/certificates"
-            className="flex items-center gap-2 px-6 py-3.5 rounded-2xl glass-panel hover:bg-slate-800 text-white font-bold border border-slate-700 transition"
+            className="flex items-center gap-2 px-6 py-3.5 rounded-2xl glass-panel hover:border-blue-500 font-bold border border-slate-300 dark:border-slate-700 transition"
           >
-            <ShieldCheck className="w-5 h-5 text-emerald-400" />
+            <ShieldCheck className="w-5 h-5 text-emerald-500" />
             Verify Certificate
           </Link>
-
-          <button
-            onClick={connectMetaMask}
-            className="flex items-center gap-2 px-6 py-3.5 rounded-2xl bg-slate-900 border border-slate-700 hover:border-blue-500 text-slate-200 font-bold transition"
-          >
-            <Lock className="w-5 h-5 text-amber-400" />
-            {account ? `Connected: ${account.substring(0, 6)}...` : "Connect Wallet"}
-          </button>
         </div>
       </section>
 
