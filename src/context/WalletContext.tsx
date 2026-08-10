@@ -3,7 +3,6 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 import { ethers } from "ethers";
 
-// Default Hardhat pre-funded test signers for easy local testing
 export const TEST_ACCOUNTS = [
   { name: "Admin / Fee Recipient", role: "ADMIN", address: "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266", key: "0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80" },
   { name: "Certified Issuer (Bureau Veritas)", role: "ISSUER", address: "0x70997970C51812dc3A010C7d01b50e0d17dc79C8", key: "0x59c6995e998f97a5a0044966f0945389dc9e86dae88c7a8412f4603b6b78690d" },
@@ -21,16 +20,30 @@ export interface TxStatus {
   errorDetails?: string;
 }
 
+export interface AuthSession {
+  isAuthenticated: boolean;
+  provider: "google" | "apple" | "wallet" | "email" | null;
+  userName?: string;
+  email?: string;
+}
+
 interface WalletContextType {
   account: string | null;
   role: string;
   isMetaMaskConnected: boolean;
   activeAccountKey: string | null;
   txStatus: TxStatus;
+  authSession: AuthSession;
+  themeMode: "white" | "dark";
   connectMetaMask: () => Promise<void>;
   switchAccount: (accountKey: string, role: string) => void;
   setTxStatus: React.Dispatch<React.SetStateAction<TxStatus>>;
   resetTxStatus: () => void;
+  loginWithGoogle: () => void;
+  loginWithApple: () => void;
+  loginWithEmail: (email: string) => void;
+  logout: () => void;
+  toggleThemeMode: () => void;
 }
 
 const WalletContext = createContext<WalletContextType | undefined>(undefined);
@@ -40,12 +53,32 @@ export function WalletProvider({ children }: { children: React.ReactNode }) {
   const [activeAccountKey, setActiveAccountKey] = useState<string | null>(TEST_ACCOUNTS[0].key);
   const [role, setRole] = useState<string>("ADMIN");
   const [isMetaMaskConnected, setIsMetaMaskConnected] = useState<boolean>(false);
+  const [themeMode, setThemeMode] = useState<"white" | "dark">("white");
+
+  const [authSession, setAuthSession] = useState<AuthSession>({
+    isAuthenticated: true,
+    provider: "wallet",
+    userName: "Admin / Fee Recipient",
+    email: "admin@trustchain.io",
+  });
 
   const [txStatus, setTxStatus] = useState<TxStatus>({
     active: false,
     step: "idle",
     message: "",
   });
+
+  useEffect(() => {
+    if (themeMode === "dark") {
+      document.body.classList.add("dark-theme");
+    } else {
+      document.body.classList.remove("dark-theme");
+    }
+  }, [themeMode]);
+
+  const toggleThemeMode = () => {
+    setThemeMode((prev) => (prev === "white" ? "dark" : "white"));
+  };
 
   const resetTxStatus = () => {
     setTxStatus({ active: false, step: "idle", message: "" });
@@ -58,9 +91,15 @@ export function WalletProvider({ children }: { children: React.ReactNode }) {
         const accounts = await provider.send("eth_requestAccounts", []);
         if (accounts.length > 0) {
           setAccount(accounts[0]);
-          setActiveAccountKey(null); // External MetaMask signer
+          setActiveAccountKey(null);
           setIsMetaMaskConnected(true);
           setRole("CUSTOMER");
+          setAuthSession({
+            isAuthenticated: true,
+            provider: "wallet",
+            userName: `Wallet User (${accounts[0].substring(0, 6)}...)`,
+            email: `${accounts[0].substring(0, 8)}@web3.eth`,
+          });
         }
       } catch (err) {
         console.error("MetaMask connection failed", err);
@@ -70,6 +109,45 @@ export function WalletProvider({ children }: { children: React.ReactNode }) {
     }
   };
 
+  const loginWithGoogle = () => {
+    setAuthSession({
+      isAuthenticated: true,
+      provider: "google",
+      userName: "Alex Johnson (Google User)",
+      email: "alex.johnson@gmail.com",
+    });
+    setRole("CUSTOMER");
+  };
+
+  const loginWithApple = () => {
+    setAuthSession({
+      isAuthenticated: true,
+      provider: "apple",
+      userName: "Taylor Smith (Apple ID)",
+      email: "t.smith@icloud.com",
+    });
+    setRole("CUSTOMER");
+  };
+
+  const loginWithEmail = (email: string) => {
+    setAuthSession({
+      isAuthenticated: true,
+      provider: "email",
+      userName: email.split("@")[0],
+      email: email,
+    });
+    setRole("CUSTOMER");
+  };
+
+  const logout = () => {
+    setAuthSession({
+      isAuthenticated: false,
+      provider: null,
+      userName: undefined,
+      email: undefined,
+    });
+  };
+
   const switchAccount = (key: string, newRole: string) => {
     const acc = TEST_ACCOUNTS.find((a) => a.key === key);
     if (acc) {
@@ -77,6 +155,12 @@ export function WalletProvider({ children }: { children: React.ReactNode }) {
       setActiveAccountKey(acc.key);
       setRole(newRole);
       setIsMetaMaskConnected(false);
+      setAuthSession({
+        isAuthenticated: true,
+        provider: "wallet",
+        userName: acc.name,
+        email: `${acc.name.toLowerCase().replace(/[^a-z0-9]/g, "")}@trustchain.io`,
+      });
     }
   };
 
@@ -88,10 +172,17 @@ export function WalletProvider({ children }: { children: React.ReactNode }) {
         isMetaMaskConnected,
         activeAccountKey,
         txStatus,
+        authSession,
+        themeMode,
         connectMetaMask,
         switchAccount,
         setTxStatus,
         resetTxStatus,
+        loginWithGoogle,
+        loginWithApple,
+        loginWithEmail,
+        logout,
+        toggleThemeMode,
       }}
     >
       {children}
