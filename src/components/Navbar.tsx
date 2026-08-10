@@ -77,11 +77,11 @@ export function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 w-full glass-panel border-b border-emerald-300 dark:border-emerald-800 bg-white/95 dark:bg-emerald-950/95 backdrop-blur-2xl shadow-md">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-3">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-14 flex items-center justify-between gap-3">
         {/* Brand Logo - CertiChain Logo Component */}
         <Link href="/" className="flex items-center gap-2 group shrink-0">
-          <CertiChainLogo size="md" />
-          <span className="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-emerald-200 dark:bg-emerald-500/20 text-emerald-900 dark:text-emerald-300 border border-emerald-400 dark:border-emerald-500/50 shadow-sm ml-1">
+          <CertiChainLogo size="sm" />
+          <span className="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-md bg-emerald-200 dark:bg-emerald-500/20 text-emerald-900 dark:text-emerald-300 border border-emerald-400 dark:border-emerald-500/50 shadow-sm ml-1">
             EVM Live
           </span>
         </Link>
@@ -96,13 +96,13 @@ export function Navbar() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-extrabold whitespace-nowrap transition-all ${
+                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-extrabold whitespace-nowrap transition-all ${
                     isActive
                       ? "bg-emerald-500/20 text-emerald-900 dark:text-emerald-300 border border-emerald-500/60 shadow-sm"
                       : "text-slate-800 dark:text-slate-200 hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-emerald-100/60 dark:hover:bg-emerald-900/60"
                   }`}
                 >
-                  <Icon className={`w-4 h-4 ${isActive ? "text-emerald-600 dark:text-emerald-400" : "text-emerald-700 dark:text-emerald-400"}`} />
+                  <Icon className={`w-3.5 h-3.5 ${isActive ? "text-emerald-600 dark:text-emerald-400" : "text-emerald-700 dark:text-emerald-400"}`} />
                   {item.name}
                 </Link>
               );
@@ -111,23 +111,23 @@ export function Navbar() {
         )}
 
         {/* Right Actions */}
-        <div className="flex items-center gap-2.5 shrink-0">
+        <div className="flex items-center gap-2 shrink-0">
           {/* Theme Mode Toggle Button */}
           <button
             onClick={toggleThemeMode}
             title={themeMode === "white" ? "Switch to Dark Theme" : "Switch to White Theme"}
-            className="p-2.5 rounded-xl bg-emerald-100/80 dark:bg-emerald-900/80 border border-emerald-300 dark:border-emerald-700 text-emerald-900 dark:text-emerald-200 hover:border-emerald-500 transition shadow-sm"
+            className="p-2 rounded-md bg-emerald-100/80 dark:bg-emerald-900/80 border border-emerald-300 dark:border-emerald-700 text-emerald-900 dark:text-emerald-200 hover:border-emerald-500 transition shadow-sm"
           >
             {themeMode === "white" ? <Moon className="w-4 h-4 text-emerald-800" /> : <Sun className="w-4 h-4 text-amber-400" />}
           </button>
 
           {!authSession.isAuthenticated ? (
-            /* Unauthenticated View: Single Alive Green CTA */
+            /* Unauthenticated View: Square Alive Green CTA */
             <Link
               href="/login"
-              className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-emerald-600 via-teal-600 to-green-500 hover:from-emerald-500 hover:to-green-400 text-white font-extrabold text-xs shadow-lg shadow-emerald-500/30 transition transform hover:-translate-y-0.5"
+              className="flex items-center gap-2 px-4 py-1.5 rounded-md bg-gradient-to-r from-emerald-600 via-teal-600 to-green-500 hover:from-emerald-500 hover:to-green-400 text-white font-extrabold text-xs shadow-md transition transform hover:-translate-y-0.5"
             >
-              <LogIn className="w-4 h-4" /> Sign In / Get Started
+              <LogIn className="w-3.5 h-3.5" /> Sign In / Get Started
             </Link>
           ) : (
             /* Authenticated View: Role Selector & Account Dropdown */
@@ -135,7 +135,7 @@ export function Navbar() {
               <button
                 onClick={handleSync}
                 title="Sync DB Indexer"
-                className="p-2.5 rounded-xl bg-emerald-100/80 dark:bg-emerald-900/80 border border-emerald-300 dark:border-emerald-700 text-emerald-900 dark:text-emerald-200 hover:border-emerald-500 transition shadow-sm"
+                className="p-2 rounded-md bg-emerald-100/80 dark:bg-emerald-900/80 border border-emerald-300 dark:border-emerald-700 text-emerald-900 dark:text-emerald-200 hover:border-emerald-500 transition shadow-sm"
               >
                 <RefreshCw className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
               </button>
@@ -143,10 +143,10 @@ export function Navbar() {
               <div className="relative">
                 <button
                   onClick={() => setDropdownOpen(!dropdownOpen)}
-                  className="flex items-center gap-2.5 px-4 py-2.5 rounded-xl bg-emerald-100/80 dark:bg-emerald-900/80 border border-emerald-300 dark:border-emerald-700 hover:border-emerald-500 text-xs text-slate-900 dark:text-white transition shadow-md font-bold"
+                  className="flex items-center gap-2 px-3 py-1.5 rounded-md bg-emerald-100/80 dark:bg-emerald-900/80 border border-emerald-300 dark:border-emerald-700 hover:border-emerald-500 text-xs text-slate-900 dark:text-white transition shadow-md font-bold"
                 >
                   <div className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse shadow-sm shadow-emerald-400" />
-                  <span className="font-extrabold text-emerald-800 dark:text-emerald-300 uppercase tracking-wider text-[10px] px-2 py-0.5 rounded-md bg-emerald-200 dark:bg-emerald-950/90 border border-emerald-400 dark:border-emerald-700/60 shadow-inner">
+                  <span className="font-extrabold text-emerald-800 dark:text-emerald-300 uppercase tracking-wider text-[10px] px-1.5 py-0.5 rounded-sm bg-emerald-200 dark:bg-emerald-950/90 border border-emerald-400 dark:border-emerald-700/60 shadow-inner">
                     {role}
                   </span>
                   <span className="font-mono text-slate-900 dark:text-slate-100 font-bold">{formatAddress(account)}</span>
@@ -154,7 +154,7 @@ export function Navbar() {
                 </button>
 
                 {dropdownOpen && (
-                  <div className="absolute right-0 mt-3 w-80 rounded-2xl bg-white dark:bg-emerald-950/95 border border-emerald-300 dark:border-emerald-700 shadow-2xl p-4 space-y-3 z-50 animate-in fade-in zoom-in-95 backdrop-blur-xl">
+                  <div className="absolute right-0 mt-2 w-80 rounded-md bg-white dark:bg-emerald-950/95 border border-emerald-300 dark:border-emerald-700 shadow-2xl p-4 space-y-3 z-50 animate-in fade-in zoom-in-95 backdrop-blur-xl">
                     <div className="p-3 rounded-xl bg-emerald-50 dark:bg-emerald-950 border border-emerald-200 dark:border-emerald-800">
                       <div className="text-[11px] font-extrabold text-emerald-700 dark:text-emerald-400 uppercase tracking-wider mb-1">
                         Authenticated Session ({authSession.provider || "wallet"})
