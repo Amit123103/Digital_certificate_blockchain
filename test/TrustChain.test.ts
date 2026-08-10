@@ -1,5 +1,6 @@
 import { expect } from "chai";
-import { ethers } from "hardhat";
+import hre from "hardhat";
+const { ethers } = hre;
 import {
   CertificateRegistry,
   ProductRegistry,
@@ -105,7 +106,7 @@ describe("TrustChain Comprehensive Suite", function () {
       const exists = await certRegistry.certificateExists(sampleCertId);
       expect(exists).to.be.true;
 
-      const (isValid, isRevoked, hashMatch) = await certRegistry.verifyCertificate(sampleCertId, sampleCertHash);
+      const [isValid, isRevoked, hashMatch] = await certRegistry.verifyCertificate(sampleCertId, sampleCertHash);
       expect(isValid).to.be.true;
       expect(isRevoked).to.be.false;
       expect(hashMatch).to.be.true;
@@ -146,10 +147,10 @@ describe("TrustChain Comprehensive Suite", function () {
       const exists = await productRegistry.productExists(sampleProductId);
       expect(exists).to.be.true;
 
-      const (id, name,,,,,, status,) = await productRegistry.getProduct(sampleProductId);
-      expect(id).to.equal(sampleProductId);
-      expect(name).to.equal("Swiss Chronograph Watch");
-      expect(status).to.equal("REGISTERED");
+      const prod = await productRegistry.getProduct(sampleProductId);
+      expect(prod[0]).to.equal(sampleProductId);
+      expect(prod[1]).to.equal("Swiss Chronograph Watch");
+      expect(prod[7]).to.equal("REGISTERED");
     });
 
     it("Should reject registering product with invalid or revoked certificate", async function () {
@@ -181,9 +182,9 @@ describe("TrustChain Comprehensive Suite", function () {
       expect(history[0].to).to.equal(distributor.address);
       expect(history[0].location).to.equal("Geneva Hub");
 
-      const (,,,,,, currentOwner, status,) = await productRegistry.getProduct(sampleProductId);
-      expect(currentOwner).to.equal(distributor.address);
-      expect(status).to.equal("IN_TRANSIT");
+      const prodTrans = await productRegistry.getProduct(sampleProductId);
+      expect(prodTrans[6]).to.equal(distributor.address);
+      expect(prodTrans[7]).to.equal("IN_TRANSIT");
     });
 
     it("Should record custodial transfer from Distributor to Retailer", async function () {

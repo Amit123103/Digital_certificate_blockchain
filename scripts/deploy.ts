@@ -1,4 +1,5 @@
-import { ethers } from "hardhat";
+import hre from "hardhat";
+const { ethers } = hre;
 import * as fs from "fs";
 import * as path from "path";
 
@@ -94,7 +95,7 @@ async function main() {
   };
 
   // Save to src/contracts/addresses.json
-  const outDir = path.join(__dirname, "../src/contracts");
+  const outDir = path.join(process.cwd(), "src/contracts");
   if (!fs.existsSync(outDir)) {
     fs.mkdirSync(outDir, { recursive: true });
   }

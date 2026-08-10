@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.20;
+pragma solidity ^0.8.24;
 
 import "./ProductRegistry.sol";
 
@@ -63,9 +63,9 @@ contract SupplyChain {
 
         _productHistory[productId].push(newEvent);
 
-        // Update ownership and status in ProductRegistry
-        productRegistry.transferOwnership(productId, to);
+        // Update status first, then transfer ownership in ProductRegistry
         productRegistry.updateProductStatus(productId, status);
+        productRegistry.transferOwnership(productId, to);
 
         emit SupplyChainEventCreated(
             productId,

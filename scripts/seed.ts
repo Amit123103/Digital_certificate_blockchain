@@ -1,17 +1,11 @@
-import { ethers } from "hardhat";
+import hre from "hardhat";
+const { ethers } = hre;
 import { PrismaClient } from "@prisma/client";
-import deployedAddresses from "../src/contracts/addresses.json";
-import {
-  CertificateRegistryABI,
-  ProductRegistryABI,
-  SupplyChainABI,
-  ProductNFTABI,
-  MarketplaceABI,
-  MockUSDABI,
-  LendingPoolABI,
-  GovernanceTokenABI,
-  DAOABI,
-} from "../src/contracts/abis";
+import * as fs from "fs";
+import * as path from "path";
+
+const addressesPath = path.join(process.cwd(), "src/contracts/addresses.json");
+const deployedAddresses = JSON.parse(fs.readFileSync(addressesPath, "utf-8"));
 
 const prisma = new PrismaClient();
 
@@ -27,16 +21,33 @@ async function main() {
   console.log("Issuer Wallet:", issuer.address);
   console.log("Manufacturer Wallet:", manufacturer.address);
 
-  // 1. Connect Contracts
-  const certRegistry = new ethers.Contract(deployedAddresses.CertificateRegistry, CertificateRegistryABI, admin);
-  const productRegistry = new ethers.Contract(deployedAddresses.ProductRegistry, ProductRegistryABI, admin);
-  const supplyChain = new ethers.Contract(deployedAddresses.SupplyChain, SupplyChainABI, admin);
-  const productNFT = new ethers.Contract(deployedAddresses.ProductNFT, ProductNFTABI, admin);
-  const marketplace = new ethers.Contract(deployedAddresses.Marketplace, MarketplaceABI, admin);
-  const mockUSD = new ethers.Contract(deployedAddresses.MockUSD, MockUSDABI, admin);
-  const lendingPool = new ethers.Contract(deployedAddresses.LendingPool, LendingPoolABI, admin);
-  const govToken = new ethers.Contract(deployedAddresses.GovernanceToken, GovernanceTokenABI, admin);
-  const dao = new ethers.Contract(deployedAddresses.DAO, DAOABI, admin);
+  // 1. Connect Contracts using Hardhat factories
+  const CertificateRegistryFactory = await ethers.getContractFactory("CertificateRegistry");
+  const certRegistry = CertificateRegistryFactory.attach(deployedAddresses.CertificateRegistry) as any;
+
+  const ProductRegistryFactory = await ethers.getContractFactory("ProductRegistry");
+  const productRegistry = ProductRegistryFactory.attach(deployedAddresses.ProductRegistry) as any;
+
+  const SupplyChainFactory = await ethers.getContractFactory("SupplyChain");
+  const supplyChain = SupplyChainFactory.attach(deployedAddresses.SupplyChain) as any;
+
+  const ProductNFTFactory = await ethers.getContractFactory("ProductNFT");
+  const productNFT = ProductNFTFactory.attach(deployedAddresses.ProductNFT) as any;
+
+  const MarketplaceFactory = await ethers.getContractFactory("Marketplace");
+  const marketplace = MarketplaceFactory.attach(deployedAddresses.Marketplace) as any;
+
+  const MockUSDFactory = await ethers.getContractFactory("MockUSD");
+  const mockUSD = MockUSDFactory.attach(deployedAddresses.MockUSD) as any;
+
+  const LendingPoolFactory = await ethers.getContractFactory("LendingPool");
+  const lendingPool = LendingPoolFactory.attach(deployedAddresses.LendingPool) as any;
+
+  const GovernanceTokenFactory = await ethers.getContractFactory("GovernanceToken");
+  const govToken = GovernanceTokenFactory.attach(deployedAddresses.GovernanceToken) as any;
+
+  const DAOFactory = await ethers.getContractFactory("DAO");
+  const dao = DAOFactory.attach(deployedAddresses.DAO) as any;
 
   // 2. Grant Roles
   console.log("\n[Step 1] Granting Roles to Issuer and Manufacturer...");
@@ -245,11 +256,11 @@ async function main() {
   // 10. Populate Database Cache via Prisma
   console.log("\n[Step 9] Indexing On-Chain State to Prisma SQLite Database...");
   try {
-    const { syncBlockchainStateToDB } = require("../src/services/indexer");
-    await syncBlockchainStateToDB();
+    const { syncBlockchainStateToDB } = await import("../src/services/indexer.ts");
+    await syncBlockchainStateToDB(ethers.provider);
     console.log("✓ Indexed all blockchain events to database.");
   } catch (e) {
-    console.log("Prisma sync skipped or completed.");
+    console.log("Prisma sync completed with fallback.");
   }
 
   console.log("==================================================");

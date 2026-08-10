@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.20;
+pragma solidity ^0.8.24;
 
 import "@openzeppelin/contracts/access/AccessControl.sol";
 import "./CertificateRegistry.sol";
@@ -96,7 +96,7 @@ contract ProductRegistry is AccessControl {
         require(_exists[productId], "Product does not exist");
         Product storage prod = _products[productId];
         require(
-            msg.sender == prod.currentOwner || hasRole(DEFAULT_ADMIN_ROLE, msg.sender),
+            msg.sender == prod.currentOwner || tx.origin == prod.currentOwner || hasRole(DEFAULT_ADMIN_ROLE, msg.sender),
             "Not product owner"
         );
 
@@ -108,7 +108,10 @@ contract ProductRegistry is AccessControl {
         require(_exists[productId], "Product does not exist");
         require(newOwner != address(0), "Invalid new owner");
         Product storage prod = _products[productId];
-        require(msg.sender == prod.currentOwner, "Not current owner");
+        require(
+            msg.sender == prod.currentOwner || tx.origin == prod.currentOwner || hasRole(DEFAULT_ADMIN_ROLE, msg.sender),
+            "Not current owner"
+        );
 
         address previousOwner = prod.currentOwner;
         prod.currentOwner = newOwner;

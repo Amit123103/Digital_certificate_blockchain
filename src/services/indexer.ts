@@ -1,4 +1,4 @@
-import { prisma } from "../lib/prisma";
+import { prisma } from "../lib/prisma.ts";
 import {
   getCertificateContract,
   getProductRegistryContract,
@@ -7,18 +7,18 @@ import {
   getMarketplaceContract,
   getLendingPoolContract,
   getDAOContract,
-} from "../lib/contracts";
+} from "../lib/contracts.ts";
 import { ethers } from "ethers";
 
-export async function syncBlockchainStateToDB() {
+export async function syncBlockchainStateToDB(runner?: any) {
   try {
-    const certContract = getCertificateContract();
-    const productContract = getProductRegistryContract();
-    const supplyChainContract = getSupplyChainContract();
-    const nftContract = getProductNFTContract();
-    const marketplaceContract = getMarketplaceContract();
-    const lendingContract = getLendingPoolContract();
-    const daoContract = getDAOContract();
+    const certContract = getCertificateContract(runner);
+    const productContract = getProductRegistryContract(runner);
+    const supplyChainContract = getSupplyChainContract(runner);
+    const nftContract = getProductNFTContract(runner);
+    const marketplaceContract = getMarketplaceContract(runner);
+    const lendingContract = getLendingPoolContract(runner);
+    const daoContract = getDAOContract(runner);
 
     console.log("[Indexer] Starting sync with local blockchain...");
 
