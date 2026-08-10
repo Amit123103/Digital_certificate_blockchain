@@ -74,25 +74,27 @@ export function Navbar() {
   };
 
   return (
-    <header className="sticky top-0 z-50 w-full glass-panel border-b border-slate-700/60 bg-slate-950/90 backdrop-blur-2xl">
+    <header className="sticky top-0 z-50 w-full glass-panel border-b border-slate-200 dark:border-slate-800 bg-white/90 dark:bg-slate-950/90 backdrop-blur-2xl shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-3">
         {/* Brand Logo */}
         <Link href="/" className="flex items-center gap-3 group shrink-0">
-          <div className="w-11 h-11 rounded-2xl bg-gradient-to-tr from-blue-500 via-indigo-500 to-emerald-400 p-0.5 shadow-lg shadow-blue-500/30 group-hover:scale-105 transition">
-            <div className="w-full h-full bg-slate-950 rounded-[14px] flex items-center justify-center">
-              <ShieldCheck className="w-6 h-6 text-blue-400" />
+          <div className="w-11 h-11 rounded-2xl bg-gradient-to-tr from-blue-600 via-indigo-600 to-emerald-500 p-0.5 shadow-lg shadow-blue-500/20 group-hover:scale-105 transition">
+            <div className="w-full h-full bg-white dark:bg-slate-950 rounded-[14px] flex items-center justify-center">
+              <ShieldCheck className="w-6 h-6 text-blue-600 dark:text-blue-400" />
             </div>
           </div>
           <div>
             <div className="flex items-center gap-2">
-              <span className="text-xl font-extrabold tracking-tight text-white group-hover:text-blue-400 transition">
+              <span className="text-xl font-extrabold tracking-tight text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition">
                 TrustChain
               </span>
-              <span className="text-[10px] font-bold uppercase px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 shadow-sm">
+              <span className="text-[10px] font-bold uppercase px-2 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-500/20 text-emerald-700 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-500/40 shadow-sm">
                 EVM Live
               </span>
             </div>
-            <p className="text-[11px] text-slate-400 hidden xl:block font-medium">Digital Certs • Supply Chain • NFT • DeFi • DAO</p>
+            <p className="text-[11px] text-slate-600 dark:text-slate-400 hidden xl:block font-semibold">
+              Digital Certs • Supply Chain • NFT • DeFi • DAO
+            </p>
           </div>
         </Link>
 
@@ -105,13 +107,13 @@ export function Navbar() {
               <Link
                 key={item.href}
                 href={item.href}
-                className={`flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition-all ${
+                className={`flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition-all ${
                   isActive
-                    ? "bg-gradient-to-r from-blue-600/30 to-indigo-600/30 text-blue-300 border border-blue-400/40 shadow-md"
-                    : "text-slate-300 hover:text-white hover:bg-slate-800/80"
+                    ? "bg-blue-600/10 dark:bg-blue-600/30 text-blue-700 dark:text-blue-300 border border-blue-400/50 shadow-sm"
+                    : "text-slate-700 dark:text-slate-200 hover:text-blue-600 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800/80"
                 }`}
               >
-                <Icon className={`w-3.5 h-3.5 ${isActive ? "text-blue-400" : "text-slate-400"}`} />
+                <Icon className={`w-4 h-4 ${isActive ? "text-blue-600 dark:text-blue-400" : "text-slate-500 dark:text-slate-400"}`} />
                 {item.name}
               </Link>
             );
@@ -134,33 +136,33 @@ export function Navbar() {
             title="Sync DB Indexer"
             className="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:border-blue-500 transition shadow-sm"
           >
-            <RefreshCw className="w-4 h-4 text-blue-500" />
+            <RefreshCw className="w-4 h-4 text-blue-600 dark:text-blue-400" />
           </button>
 
           {/* Auth State & Role Selector Dropdown */}
           <div className="relative">
             <button
               onClick={() => setDropdownOpen(!dropdownOpen)}
-              className="flex items-center gap-2.5 px-4 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 hover:border-blue-500 text-xs text-slate-900 dark:text-white transition shadow-md font-semibold"
+              className="flex items-center gap-2.5 px-4 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 hover:border-blue-500 text-xs text-slate-900 dark:text-white transition shadow-md font-bold"
             >
               <div className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse shadow-sm shadow-emerald-400" />
-              <span className="font-bold text-blue-600 dark:text-blue-400 uppercase tracking-wider text-[10px] px-2 py-0.5 rounded-md bg-blue-100 dark:bg-blue-950/90 border border-blue-300 dark:border-blue-700/60 shadow-inner">
+              <span className="font-bold text-blue-700 dark:text-blue-400 uppercase tracking-wider text-[10px] px-2 py-0.5 rounded-md bg-blue-100 dark:bg-blue-950/90 border border-blue-300 dark:border-blue-700/60 shadow-inner">
                 {role}
               </span>
-              <span className="font-mono text-slate-700 dark:text-slate-200 font-semibold">{formatAddress(account)}</span>
-              <ChevronDown className="w-3.5 h-3.5 text-slate-400" />
+              <span className="font-mono text-slate-900 dark:text-slate-200 font-bold">{formatAddress(account)}</span>
+              <ChevronDown className="w-3.5 h-3.5 text-slate-500" />
             </button>
 
             {dropdownOpen && (
               <div className="absolute right-0 mt-3 w-80 rounded-2xl bg-white dark:bg-slate-900/95 border border-slate-200 dark:border-slate-700 shadow-2xl p-4 space-y-3 z-50 animate-in fade-in zoom-in-95 backdrop-blur-xl">
                 <div className="p-3 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800">
-                  <div className="text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-1">
+                  <div className="text-[11px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1">
                     Authenticated Session ({authSession.provider || "wallet"})
                   </div>
                   <div className="text-xs font-bold text-slate-900 dark:text-white truncate">
                     {authSession.userName || "User"}
                   </div>
-                  <div className="flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400 mt-1">
+                  <div className="flex items-center justify-between text-[11px] font-mono text-slate-600 dark:text-slate-400 mt-1">
                     <span>{formatAddress(account)}</span>
                     <button onClick={handleCopy} className="text-slate-400 hover:text-blue-500 transition">
                       {copied ? <CheckCircle className="w-3.5 h-3.5 text-emerald-500" /> : <Copy className="w-3.5 h-3.5" />}
@@ -168,7 +170,7 @@ export function Navbar() {
                   </div>
                 </div>
 
-                <div className="text-[11px] font-bold text-slate-400 uppercase tracking-wider px-1 pt-1">
+                <div className="text-[11px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider px-1 pt-1">
                   Switch Active Role & Test Signer
                 </div>
 
@@ -187,12 +189,12 @@ export function Navbar() {
                       }`}
                     >
                       <div className="truncate pr-2">
-                        <div className="font-semibold text-slate-900 dark:text-white truncate">{acc.name}</div>
-                        <div className="text-[10px] text-slate-400 font-mono">
+                        <div className="font-bold text-slate-900 dark:text-white truncate">{acc.name}</div>
+                        <div className="text-[10px] text-slate-500 font-mono">
                           {acc.address.substring(0, 8)}...{acc.address.substring(38)}
                         </div>
                       </div>
-                      <span className="text-[10px] px-2 py-0.5 rounded font-bold uppercase bg-slate-200 dark:bg-slate-900 text-blue-600 dark:text-blue-400 border border-slate-300 dark:border-slate-700 shrink-0">
+                      <span className="text-[10px] px-2 py-0.5 rounded font-bold uppercase bg-slate-200 dark:bg-slate-900 text-blue-700 dark:text-blue-400 border border-slate-300 dark:border-slate-700 shrink-0">
                         {acc.role}
                       </span>
                     </button>
@@ -205,7 +207,7 @@ export function Navbar() {
                     onClick={() => setDropdownOpen(false)}
                     className="flex-1 flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl bg-slate-900 dark:bg-slate-800 text-white font-bold text-xs transition shadow-md"
                   >
-                    <LogIn className="w-3.5 h-3.5" /> Sign In Page
+                    <LogIn className="w-3.5 h-3.5" /> Sign In / Auth
                   </Link>
 
                   <button
