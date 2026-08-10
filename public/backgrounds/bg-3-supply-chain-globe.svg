@@ -1,7 +1,5 @@
 <svg width="1920" height="1080" viewBox="0 0 1920 1080" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect width="1920" height="1080" fill="#05241b"/>
-  <!-- Supply Chain Logistics Routes -->
-  <g opacity="0.3">
+  <g opacity="0.35">
     <ellipse cx="960" cy="540" rx="700" ry="350" stroke="#10b981" stroke-width="3" stroke-dasharray="16 16"/>
     <ellipse cx="960" cy="540" rx="500" ry="250" stroke="#34d399" stroke-width="2"/>
     <path d="M 260 540 Q 960 100 1660 540" stroke="#6ee7b7" stroke-width="3" fill="none"/>

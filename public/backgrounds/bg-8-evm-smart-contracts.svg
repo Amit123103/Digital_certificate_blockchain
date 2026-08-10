@@ -1,8 +1,6 @@
 <svg width="1920" height="1080" viewBox="0 0 1920 1080" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect width="1920" height="1080" fill="#031e16"/>
-  <!-- EVM Smart Contract Code Matrix -->
-  <g opacity="0.3">
-    <rect x="200" y="200" width="600" height="400" rx="20" stroke="#10b981" stroke-width="3" fill="#021c13"/>
+  <g opacity="0.35">
+    <rect x="200" y="200" width="600" height="400" rx="20" stroke="#10b981" stroke-width="3" fill="none"/>
     <line x1="240" y1="260" x2="500" y2="260" stroke="#34d399" stroke-width="4"/>
     <line x1="240" y1="300" x2="650" y2="300" stroke="#6ee7b7" stroke-width="3"/>
     <line x1="240" y1="340" x2="580" y2="340" stroke="#10b981" stroke-width="3"/>

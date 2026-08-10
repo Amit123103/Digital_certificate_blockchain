@@ -1,7 +1,5 @@
 <svg width="1920" height="1080" viewBox="0 0 1920 1080" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect width="1920" height="1080" fill="#041a12"/>
-  <!-- Blockchain Node Network Mesh -->
-  <g opacity="0.35">
+  <g opacity="0.4">
     <circle cx="200" cy="200" r="8" fill="#10b981"/>
     <circle cx="500" cy="150" r="6" fill="#34d399"/>
     <circle cx="900" cy="300" r="10" fill="#059669"/>
@@ -22,11 +20,5 @@
     <line x1="1700" y1="350" x2="1600" y2="800" stroke="#10b981" stroke-width="2"/>
     <line x1="800" y1="750" x2="1250" y2="650" stroke="#6ee7b7" stroke-width="2"/>
     <line x1="1250" y1="650" x2="1600" y2="800" stroke="#10b981" stroke-width="2"/>
-  </g>
-  <!-- Block Hash Boxes -->
-  <g opacity="0.2">
-    <rect x="150" y="700" width="180" height="100" rx="16" stroke="#10b981" stroke-width="3" fill="#064e3b"/>
-    <rect x="700" y="100" width="180" height="100" rx="16" stroke="#34d399" stroke-width="3" fill="#064e3b"/>
-    <rect x="1450" y="500" width="180" height="100" rx="16" stroke="#10b981" stroke-width="3" fill="#064e3b"/>
   </g>
 </svg>

@@ -32,14 +32,12 @@ export function BackgroundSlider() {
       {BACKGROUND_IMAGES.map((src, i) => (
         <div
           key={src}
-          className={`absolute inset-0 bg-cover bg-center transition-opacity duration-1000 opacity-20 ${
-            i === index ? "opacity-25 scale-105" : "opacity-0 scale-100"
+          className={`absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ${
+            i === index ? "opacity-20 dark:opacity-30 scale-105" : "opacity-0 scale-100"
           }`}
           style={{ backgroundImage: `url(${src})` }}
         />
       ))}
-      {/* Radial Mask overlay to ensure text contrast remains 100% sharp */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-emerald-950/10 to-emerald-950/20 pointer-events-none" />
     </div>
   );
 }

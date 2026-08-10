@@ -1,7 +1,5 @@
 <svg width="1920" height="1080" viewBox="0 0 1920 1080" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect width="1920" height="1080" fill="#031f17"/>
-  <!-- Cryptographic Certificate Seals & Shields -->
-  <g opacity="0.3">
+  <g opacity="0.35">
     <circle cx="960" cy="540" r="300" stroke="#10b981" stroke-width="4" stroke-dasharray="12 12"/>
     <circle cx="960" cy="540" r="220" stroke="#34d399" stroke-width="2"/>
     <polygon points="960,320 1150,540 960,760 770,540" stroke="#10b981" stroke-width="3" fill="none"/>
