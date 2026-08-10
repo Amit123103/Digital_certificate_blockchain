@@ -19,11 +19,23 @@ import {
   ChevronDown,
   RefreshCw,
   History,
+  Sun,
+  Moon,
+  LogIn,
 } from "lucide-react";
 
 export function Navbar() {
   const pathname = usePathname();
-  const { account, role, connectMetaMask, switchAccount, isMetaMaskConnected } = useWallet();
+  const {
+    account,
+    role,
+    connectMetaMask,
+    switchAccount,
+    isMetaMaskConnected,
+    themeMode,
+    toggleThemeMode,
+    authSession,
+  } = useWallet();
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [copied, setCopied] = useState(false);
 
