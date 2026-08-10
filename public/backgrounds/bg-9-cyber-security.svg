@@ -1,0 +1,9 @@
+<svg width="1920" height="1080" viewBox="0 0 1920 1080" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1920" height="1080" fill="#021811"/>
+  <!-- Cryptographic Security Key Pair Circles -->
+  <g opacity="0.3">
+    <circle cx="960" cy="540" r="400" stroke="#10b981" stroke-width="3" stroke-dasharray="20 20"/>
+    <circle cx="960" cy="540" r="300" stroke="#34d399" stroke-width="2"/>
+    <circle cx="960" cy="540" r="200" stroke="#6ee7b7" stroke-width="4"/>
+  </g>
+</svg>

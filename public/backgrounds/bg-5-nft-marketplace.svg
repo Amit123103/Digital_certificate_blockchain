@@ -1,0 +1,10 @@
+<svg width="1920" height="1080" viewBox="0 0 1920 1080" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1920" height="1080" fill="#042018"/>
+  <!-- NFT Marketplace Trading Canvas -->
+  <g opacity="0.3">
+    <path d="M 200 800 Q 600 400 1000 650 T 1800 200" stroke="#34d399" stroke-width="4" fill="none"/>
+    <path d="M 200 900 Q 600 600 1000 750 T 1800 400" stroke="#10b981" stroke-width="3" fill="none"/>
+    <circle cx="1000" cy="650" r="8" fill="#34d399"/>
+    <circle cx="1800" cy="200" r="10" fill="#10b981"/>
+  </g>
+</svg>

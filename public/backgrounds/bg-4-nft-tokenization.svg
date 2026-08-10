@@ -1,0 +1,11 @@
+<svg width="1920" height="1080" viewBox="0 0 1920 1080" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1920" height="1080" fill="#031b14"/>
+  <!-- ERC-721 Tokenization Isometric Grid -->
+  <g opacity="0.25" stroke="#10b981" stroke-width="2">
+    <polygon points="960,200 1300,400 960,600 620,400"/>
+    <polygon points="960,400 1300,600 960,800 620,600"/>
+    <line x1="960" y1="200" x2="960" y2="800"/>
+    <line x1="1300" y1="400" x2="1300" y2="600"/>
+    <line x1="620" y1="400" x2="620" y2="600"/>
+  </g>
+</svg>
