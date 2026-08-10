@@ -2,7 +2,7 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,400;1,700&display=swap');
 
 :root {
   --bg-gradient: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 35%, #bbf7d0 70%, #ffffff 100%);
@@ -18,7 +18,7 @@ body {
     radial-gradient(circle at 20% 85%, rgba(110, 231, 183, 0.22) 0%, transparent 45%);
   background-attachment: fixed;
   color: #022c22;
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Roboto', sans-serif !important;
   min-height: 100vh;
 }
 
@@ -34,10 +34,13 @@ body.dark-theme {
   color: #f0fdf4;
 }
 
-/* Universal Typography High-Contrast Legibility */
+/* Universal Typography Roboto Font Legibility */
+h1, h2, h3, h4, h5, h6, button, input, select, textarea, p, span, div, a {
+  font-family: 'Roboto', sans-serif !important;
+}
+
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Space Grotesk', sans-serif;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.01em;
   color: #022c22;
 }
 
