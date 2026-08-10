@@ -191,6 +191,7 @@ export function WalletProvider({ children }: { children: React.ReactNode }) {
         resetTxStatus,
         loginWithGoogle,
         loginWithApple,
+        loginWithMicrosoft,
         loginWithEmail,
         logout,
         toggleThemeMode,
