@@ -37,12 +37,14 @@ export default function CertificatesPage() {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-3xl font-extrabold text-white tracking-tight flex items-center gap-3">
-            <ShieldCheck className="w-8 h-8 text-blue-400" />
-            Digital Certificate Portal
+          <h1 className="text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight flex items-center gap-3">
+            <div className="w-10 h-10 rounded-2xl bg-blue-600/20 text-blue-600 dark:text-blue-400 flex items-center justify-center border border-blue-500/30">
+              <ShieldCheck className="w-6 h-6" />
+            </div>
+            Digital Certificates Registry
           </h1>
-          <p className="text-slate-400 text-sm mt-1">
-            Register, audit, verify, and revoke cryptographic SHA-256 digital certificates on-chain.
+          <p className="text-slate-700 dark:text-slate-300 text-xs font-semibold mt-1">
+            Browse cryptographic digital certificates issued by accredited audit authorities on-chain.
           </p>
         </div>
 

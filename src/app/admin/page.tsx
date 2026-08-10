@@ -133,13 +133,13 @@ export default function AdminDashboardPage() {
       {/* Page Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight flex items-center gap-3">
-            <div className="w-10 h-10 rounded-2xl bg-blue-600/30 border border-blue-500/50 flex items-center justify-center text-blue-400">
+          <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight flex items-center gap-3">
+            <div className="w-10 h-10 rounded-2xl bg-blue-600/30 border border-blue-500/50 flex items-center justify-center text-blue-600 dark:text-blue-400">
               <LayoutDashboard className="w-6 h-6" />
             </div>
             Admin & System Analytics Dashboard
           </h1>
-          <p className="text-slate-300 text-sm mt-1.5 font-medium">
+          <p className="text-slate-700 dark:text-slate-300 text-sm mt-1.5 font-semibold">
             Manage system configurations, issuer role access, marketplace trading fee parameters, and database indexer logs.
           </p>
         </div>
