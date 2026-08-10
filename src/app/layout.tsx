@@ -4,6 +4,7 @@ import { WalletProvider } from "@/context/WalletContext";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { TxModal } from "@/components/TxModal";
+import { BackgroundSlider } from "@/components/BackgroundSlider";
 
 export const metadata: Metadata = {
   title: "CertiChain | Blockchain Certificate, Supply Chain, NFT, DeFi & DAO Platform",
@@ -18,8 +19,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="antialiased selection:bg-emerald-500 selection:text-white flex flex-col min-h-screen">
+      <body className="antialiased selection:bg-emerald-500 selection:text-white flex flex-col min-h-screen relative">
         <WalletProvider>
+          <BackgroundSlider />
           <Navbar />
           <TxModal />
           <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
