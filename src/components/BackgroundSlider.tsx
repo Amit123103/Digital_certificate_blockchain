@@ -33,7 +33,7 @@ export function BackgroundSlider() {
         <div
           key={src}
           className={`absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ${
-            i === index ? "opacity-20 dark:opacity-30 scale-105" : "opacity-0 scale-100"
+            i === index ? "opacity-70 dark:opacity-75 scale-105" : "opacity-0 scale-100"
           }`}
           style={{ backgroundImage: `url(${src})` }}
         />

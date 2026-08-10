@@ -1,5 +1,5 @@
 <svg width="1920" height="1080" viewBox="0 0 1920 1080" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <g opacity="0.3" stroke="#10b981" stroke-width="2">
+  <g opacity="0.85" stroke="#059669" stroke-width="3">
     <polygon points="960,200 1300,400 960,600 620,400"/>
     <polygon points="960,400 1300,600 960,800 620,600"/>
     <line x1="960" y1="200" x2="960" y2="800"/>

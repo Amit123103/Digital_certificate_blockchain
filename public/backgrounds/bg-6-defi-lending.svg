@@ -1,6 +1,6 @@
 <svg width="1920" height="1080" viewBox="0 0 1920 1080" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <g opacity="0.35">
-    <path d="M 0 540 C 480 300 960 780 1440 300 C 1680 400 1800 200 1920 100" stroke="#10b981" stroke-width="4" fill="none"/>
-    <path d="M 0 640 C 480 400 960 880 1440 400 C 1680 500 1800 300 1920 200" stroke="#6ee7b7" stroke-width="3" stroke-dasharray="10 10" fill="none"/>
+  <g opacity="0.85">
+    <path d="M 0 540 C 480 300 960 780 1440 300 C 1680 400 1800 200 1920 100" stroke="#059669" stroke-width="5" fill="none"/>
+    <path d="M 0 640 C 480 400 960 880 1440 400 C 1680 500 1800 300 1920 200" stroke="#10b981" stroke-width="4" stroke-dasharray="10 10" fill="none"/>
   </g>
 </svg>
