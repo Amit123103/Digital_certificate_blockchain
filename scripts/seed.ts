@@ -256,7 +256,7 @@ async function main() {
   // 10. Populate Database Cache via Prisma
   console.log("\n[Step 9] Indexing On-Chain State to Prisma SQLite Database...");
   try {
-    const { syncBlockchainStateToDB } = await import("../src/services/indexer.ts");
+    const { syncBlockchainStateToDB } = await import("../src/services/indexer");
     await syncBlockchainStateToDB(ethers.provider);
     console.log("✓ Indexed all blockchain events to database.");
   } catch (e) {

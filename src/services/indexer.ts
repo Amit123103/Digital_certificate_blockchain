@@ -1,4 +1,4 @@
-import { prisma } from "../lib/prisma.ts";
+import { prisma } from "../lib/prisma";
 import {
   getCertificateContract,
   getProductRegistryContract,
@@ -7,7 +7,7 @@ import {
   getMarketplaceContract,
   getLendingPoolContract,
   getDAOContract,
-} from "../lib/contracts.ts";
+} from "../lib/contracts";
 import { ethers } from "ethers";
 
 export async function syncBlockchainStateToDB(runner?: any) {
