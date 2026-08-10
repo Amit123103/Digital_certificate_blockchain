@@ -77,26 +77,12 @@ export function Navbar() {
   return (
     <header className="sticky top-0 z-50 w-full glass-panel border-b border-emerald-300 dark:border-emerald-800 bg-white/95 dark:bg-emerald-950/95 backdrop-blur-2xl shadow-md">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-3">
-        {/* Brand Logo - Alive Green Badge */}
-        <Link href="/" className="flex items-center gap-3 group shrink-0">
-          <div className="w-11 h-11 rounded-2xl bg-gradient-to-tr from-emerald-600 via-teal-500 to-green-400 p-0.5 shadow-lg shadow-emerald-500/30 group-hover:scale-105 transition">
-            <div className="w-full h-full bg-white dark:bg-emerald-950 rounded-[14px] flex items-center justify-center">
-              <ShieldCheck className="w-6 h-6 text-emerald-600 dark:text-emerald-400" />
-            </div>
-          </div>
-          <div>
-            <div className="flex items-center gap-2">
-              <span className="text-xl font-extrabold tracking-tight text-slate-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition">
-                TrustChain
-              </span>
-              <span className="text-[10px] font-bold uppercase px-2 py-0.5 rounded-full bg-emerald-200 dark:bg-emerald-500/20 text-emerald-900 dark:text-emerald-300 border border-emerald-400 dark:border-emerald-500/50 shadow-sm">
-                Alive EVM Live
-              </span>
-            </div>
-            <p className="text-[11px] text-slate-700 dark:text-slate-300 hidden xl:block font-bold">
-              Digital Certs • Supply Chain • NFT • DeFi • DAO
-            </p>
-          </div>
+        {/* Brand Logo - CertiChain Logo Component */}
+        <Link href="/" className="flex items-center gap-2 group shrink-0">
+          <CertiChainLogo size="md" />
+          <span className="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-emerald-200 dark:bg-emerald-500/20 text-emerald-900 dark:text-emerald-300 border border-emerald-400 dark:border-emerald-500/50 shadow-sm ml-1">
+            EVM Live
+          </span>
         </Link>
 
         {/* Module Links (Only When Signed In) */}
