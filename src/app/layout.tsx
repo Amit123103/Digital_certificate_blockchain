@@ -6,7 +6,7 @@ import { Footer } from "@/components/Footer";
 import { TxModal } from "@/components/TxModal";
 
 export const metadata: Metadata = {
-  title: "TrustChain | Blockchain Certificate, Supply Chain, NFT, DeFi & DAO Platform",
+  title: "CertiChain | Blockchain Certificate, Supply Chain, NFT, DeFi & DAO Platform",
   description:
     "Production-style decentralized platform combining digital certificate verification, supply chain tracking, NFT minting & marketplace, NFT-collateralized DeFi lending, and token-weighted DAO governance.",
 };

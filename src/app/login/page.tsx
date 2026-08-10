@@ -3,7 +3,8 @@
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useWallet } from "@/context/WalletContext";
-import { ShieldCheck, Wallet, Mail, Lock, ArrowRight, CheckCircle2 } from "lucide-react";
+import { CertiChainLogo } from "@/components/CertiChainLogo";
+import { Wallet, Mail, Lock, ArrowRight } from "lucide-react";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -41,17 +42,13 @@ export default function LoginPage() {
 
   return (
     <div className="max-w-md mx-auto py-12 space-y-8">
-      {/* Header */}
-      <div className="text-center space-y-3">
-        <div className="w-16 h-16 rounded-3xl bg-gradient-to-tr from-emerald-600 via-teal-500 to-green-400 p-0.5 shadow-2xl shadow-emerald-500/30 mx-auto">
-          <div className="w-full h-full bg-slate-950 rounded-[22px] flex items-center justify-center">
-            <ShieldCheck className="w-9 h-9 text-emerald-400" />
-          </div>
-        </div>
-        <h1 className="text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white">
-          Sign In to TrustChain
+      {/* Header with CertiChain Logo */}
+      <div className="text-center space-y-4 flex flex-col items-center">
+        <CertiChainLogo size="xl" />
+        <h1 className="text-3xl font-black tracking-tight text-slate-900 dark:text-white">
+          Sign In to CertiChain
         </h1>
-        <p className="text-xs text-slate-800 dark:text-slate-200 font-bold max-w-sm mx-auto">
+        <p className="text-xs text-slate-800 dark:text-slate-200 font-extrabold max-w-sm mx-auto">
           Access your digital certificates, supply chain provenance, tokenized NFTs, DeFi positions, and DAO governance.
         </p>
       </div>
@@ -168,7 +165,7 @@ export default function LoginPage() {
 
       <div className="text-center text-xs text-emerald-800 dark:text-emerald-300 font-bold space-y-1">
         <p>Protected by Enterprise SHA-256 Encryption & EVM Smart Contracts.</p>
-        <p>© {new Date().getFullYear()} TrustChain Ecosystem.</p>
+        <p>© {new Date().getFullYear()} CertiChain Ecosystem.</p>
       </div>
     </div>
   );

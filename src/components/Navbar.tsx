@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useWallet, TEST_ACCOUNTS } from "@/context/WalletContext";
+import { CertiChainLogo } from "./CertiChainLogo";
 import {
   ShieldCheck,
   Package,
