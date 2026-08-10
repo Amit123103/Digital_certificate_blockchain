@@ -1,5 +1,5 @@
 import hre from "hardhat";
-import { syncBlockchainStateToDB } from "../src/services/indexer.ts";
+import { syncBlockchainStateToDB } from "../src/services/indexer";
 
 async function main() {
   console.log("Triggering DB Indexer Sync...");
