@@ -41,6 +41,7 @@ interface WalletContextType {
   resetTxStatus: () => void;
   loginWithGoogle: () => void;
   loginWithApple: () => void;
+  loginWithMicrosoft: () => void;
   loginWithEmail: (email: string) => void;
   logout: () => void;
   toggleThemeMode: () => void;
@@ -125,6 +126,16 @@ export function WalletProvider({ children }: { children: React.ReactNode }) {
       provider: "apple",
       userName: "Taylor Smith (Apple ID)",
       email: "t.smith@icloud.com",
+    });
+    setRole("CUSTOMER");
+  };
+
+  const loginWithMicrosoft = () => {
+    setAuthSession({
+      isAuthenticated: true,
+      provider: "microsoft",
+      userName: "Jordan Lee (Microsoft 365)",
+      email: "jordan.lee@microsoft.com",
     });
     setRole("CUSTOMER");
   };
