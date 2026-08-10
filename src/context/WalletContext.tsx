@@ -57,10 +57,8 @@ export function WalletProvider({ children }: { children: React.ReactNode }) {
   const [themeMode, setThemeMode] = useState<"white" | "dark">("white");
 
   const [authSession, setAuthSession] = useState<AuthSession>({
-    isAuthenticated: true,
-    provider: "wallet",
-    userName: "Admin / Fee Recipient",
-    email: "admin@trustchain.io",
+    isAuthenticated: false,
+    provider: null,
   });
 
   const [txStatus, setTxStatus] = useState<TxStatus>({
