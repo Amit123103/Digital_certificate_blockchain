@@ -70,8 +70,10 @@ export function WalletProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     if (themeMode === "dark") {
       document.body.classList.add("dark-theme");
+      document.documentElement.classList.add("dark");
     } else {
       document.body.classList.remove("dark-theme");
+      document.documentElement.classList.remove("dark");
     }
   }, [themeMode]);
 
