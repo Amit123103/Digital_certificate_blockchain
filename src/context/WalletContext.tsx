@@ -22,7 +22,7 @@ export interface TxStatus {
 
 export interface AuthSession {
   isAuthenticated: boolean;
-  provider: "google" | "apple" | "wallet" | "email" | null;
+  provider: "google" | "apple" | "microsoft" | "wallet" | "email" | null;
   userName?: string;
   email?: string;
 }

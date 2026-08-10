@@ -5,7 +5,8 @@
   "description": "Blockchain Digital Certificate Verification + Supply Chain + NFT Marketplace + DeFi + DAO platform",
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "prisma generate && next build",
+    "postinstall": "prisma generate",
     "start": "next start",
     "lint": "next lint",
     "blockchain": "hardhat node",
