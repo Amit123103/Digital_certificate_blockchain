@@ -17,10 +17,11 @@ import {
   CheckCircle2,
   Lock,
   Zap,
+  LogIn,
 } from "lucide-react";
 
 export default function HomePage() {
-  const { account, connectMetaMask } = useWallet();
+  const { authSession } = useWallet();
   const [stats, setStats] = useState<any>({});
 
   useEffect(() => {
@@ -36,7 +37,7 @@ export default function HomePage() {
       title: "Digital Certificate Verification",
       desc: "Tamper-proof cryptographic hashes registered on-chain by authorized audit institutions.",
       icon: ShieldCheck,
-      href: "/certificates",
+      href: authSession.isAuthenticated ? "/certificates" : "/login",
       color: "from-blue-600 to-indigo-600",
     },
     {
@@ -44,7 +45,7 @@ export default function HomePage() {
       title: "Supply Chain Provenance",
       desc: "Track custodial transfers step-by-step from manufacturer to distributor, retailer, and customer.",
       icon: Truck,
-      href: "/supply-chain",
+      href: authSession.isAuthenticated ? "/supply-chain" : "/login",
       color: "from-indigo-600 to-purple-600",
     },
     {
@@ -52,7 +53,7 @@ export default function HomePage() {
       title: "Product NFT Tokenization",
       desc: "Mint ERC-721 digital twin NFTs representing physical luxury goods and certified assets.",
       icon: Sparkles,
-      href: "/nft",
+      href: authSession.isAuthenticated ? "/nft" : "/login",
       color: "from-purple-600 to-pink-600",
     },
     {
@@ -60,7 +61,7 @@ export default function HomePage() {
       title: "NFT Marketplace",
       desc: "Trade verified product NFTs with automated fee collection, provenance verification & direct payouts.",
       icon: ShoppingBag,
-      href: "/marketplace",
+      href: authSession.isAuthenticated ? "/marketplace" : "/login",
       color: "from-pink-600 to-rose-600",
     },
     {
@@ -68,7 +69,7 @@ export default function HomePage() {
       title: "DeFi Lending",
       desc: "Deposit product NFTs as collateral to borrow mUSD stablecoins up to LTV ratio.",
       icon: Coins,
-      href: "/defi",
+      href: authSession.isAuthenticated ? "/defi" : "/login",
       color: "from-amber-600 to-emerald-600",
     },
     {
@@ -76,7 +77,7 @@ export default function HomePage() {
       title: "DAO Governance",
       desc: "Hold TCG governance tokens to propose parameter changes, cast votes, and execute decisions.",
       icon: Vote,
-      href: "/dao",
+      href: authSession.isAuthenticated ? "/dao" : "/login",
       color: "from-emerald-600 to-cyan-600",
     },
   ];
@@ -102,29 +103,37 @@ export default function HomePage() {
         </p>
 
         <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
-          <Link
-            href="/login"
-            className="flex items-center gap-2.5 px-7 py-4 rounded-2xl bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white font-extrabold text-sm shadow-xl shadow-blue-600/30 transition transform hover:-translate-y-0.5"
-          >
-            <Lock className="w-5 h-5" />
-            Get Started & Sign In (Google / Apple / Web3)
-          </Link>
+          {!authSession.isAuthenticated ? (
+            /* Unauthenticated View: Sign In & Get Started CTAs */
+            <div className="flex flex-col sm:flex-row items-center gap-4">
+              <Link
+                href="/login"
+                className="flex items-center gap-2.5 px-8 py-4 rounded-2xl bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white font-extrabold text-sm shadow-xl shadow-blue-600/30 transition transform hover:-translate-y-0.5"
+              >
+                <LogIn className="w-5 h-5" />
+                Get Started & Sign In (Google / Apple / Microsoft / Web3)
+              </Link>
+            </div>
+          ) : (
+            /* Authenticated View: Direct Dashboard Navigation CTAs */
+            <>
+              <Link
+                href="/marketplace"
+                className="flex items-center gap-2 px-6 py-4 rounded-2xl bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-extrabold text-sm shadow-xl transition transform hover:-translate-y-0.5"
+              >
+                <ShoppingBag className="w-5 h-5" />
+                Explore Marketplace
+              </Link>
 
-          <Link
-            href="/marketplace"
-            className="flex items-center gap-2 px-6 py-4 rounded-2xl glass-panel hover:border-blue-500 font-extrabold text-sm text-slate-900 dark:text-white border border-slate-300 dark:border-slate-700 transition"
-          >
-            <ShoppingBag className="w-5 h-5 text-indigo-600 dark:text-indigo-400" />
-            Explore Marketplace
-          </Link>
-
-          <Link
-            href="/certificates"
-            className="flex items-center gap-2 px-6 py-4 rounded-2xl glass-panel hover:border-blue-500 font-extrabold text-sm text-slate-900 dark:text-white border border-slate-300 dark:border-slate-700 transition"
-          >
-            <ShieldCheck className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />
-            Verify Certificate
-          </Link>
+              <Link
+                href="/certificates"
+                className="flex items-center gap-2 px-6 py-4 rounded-2xl bg-slate-900 dark:bg-slate-800 hover:bg-slate-800 dark:hover:bg-slate-700 text-white font-extrabold text-sm shadow-md transition"
+              >
+                <ShieldCheck className="w-5 h-5 text-emerald-400" />
+                Verify Certificate
+              </Link>
+            </>
+          )}
         </div>
       </section>
 
@@ -187,7 +196,7 @@ export default function HomePage() {
                 </div>
 
                 <div className="pt-2 flex items-center gap-2 text-xs font-extrabold text-blue-600 dark:text-blue-400">
-                  <span>Explore Module</span>
+                  <span>{authSession.isAuthenticated ? "Explore Module" : "Sign In to Access"}</span>
                   <ArrowRight className="w-3.5 h-3.5" />
                 </div>
               </Link>
@@ -211,10 +220,10 @@ export default function HomePage() {
         </div>
 
         <Link
-          href="/admin"
+          href={authSession.isAuthenticated ? "/admin" : "/login"}
           className="px-6 py-4 rounded-2xl bg-slate-900 dark:bg-slate-100 hover:bg-slate-800 dark:hover:bg-white text-white dark:text-slate-900 font-extrabold text-sm shadow-xl shrink-0 transition"
         >
-          Open Admin Control Panel
+          {authSession.isAuthenticated ? "Open Admin Control Panel" : "Sign In to Admin Panel"}
         </Link>
       </section>
     </div>
