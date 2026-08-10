@@ -7,7 +7,7 @@ import { getProductNFTContract, getSigner } from "@/lib/contracts";
 import { uploadToIPFS } from "@/lib/ipfs";
 import { Sparkles, ShieldCheck, CheckCircle2, ArrowRight, ExternalLink, RefreshCw } from "lucide-react";
 
-export default function NFTMintPage() {
+function NFTMintContent() {
   const searchParams = useSearchParams();
   const preselectProduct = searchParams.get("productId") || "";
 
@@ -191,5 +191,13 @@ export default function NFTMintPage() {
         )}
       </div>
     </div>
+  );
+}
+
+export default function NFTMintPage() {
+  return (
+    <React.Suspense fallback={<div className="text-center py-12 text-slate-800 dark:text-slate-200 font-bold">Loading NFT Minting Portal...</div>}>
+      <NFTMintContent />
+    </React.Suspense>
   );
 }

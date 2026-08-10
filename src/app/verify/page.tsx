@@ -6,7 +6,7 @@ import { getCertificateContract } from "@/lib/contracts";
 import { calculateKeccak256 } from "@/lib/hash";
 import { ShieldCheck, CheckCircle2, AlertTriangle, XCircle, FileText, Search, QrCode, ExternalLink } from "lucide-react";
 
-export default function PublicVerifyPage() {
+function VerifyContent() {
   const searchParams = useSearchParams();
   const initialId = searchParams.get("id") || "";
 
@@ -226,5 +226,13 @@ export default function PublicVerifyPage() {
         </div>
       )}
     </div>
+  );
+}
+
+export default function PublicVerifyPage() {
+  return (
+    <React.Suspense fallback={<div className="text-center py-12 text-slate-800 dark:text-slate-200 font-bold">Loading Verification Portal...</div>}>
+      <VerifyContent />
+    </React.Suspense>
   );
 }
