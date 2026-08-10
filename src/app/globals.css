@@ -5,33 +5,33 @@
 @tailwind utilities;
 
 :root {
-  --bg-gradient: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 35%, #e2e8f0 70%, #ffffff 100%);
+  --bg-gradient: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 35%, #bbf7d0 70%, #ffffff 100%);
 }
 
 body {
-  background: #f8fafc;
+  background: #f0fdf4;
   background-image: 
-    radial-gradient(circle at 10% 10%, rgba(59, 130, 246, 0.12) 0%, transparent 45%),
-    radial-gradient(circle at 90% 15%, rgba(139, 92, 246, 0.12) 0%, transparent 45%),
-    radial-gradient(circle at 50% 50%, rgba(6, 182, 212, 0.10) 0%, transparent 55%),
-    radial-gradient(circle at 80% 80%, rgba(236, 72, 153, 0.10) 0%, transparent 50%),
-    radial-gradient(circle at 20% 85%, rgba(16, 185, 129, 0.10) 0%, transparent 45%);
+    radial-gradient(circle at 10% 10%, rgba(16, 185, 129, 0.22) 0%, transparent 45%),
+    radial-gradient(circle at 90% 15%, rgba(52, 211, 153, 0.22) 0%, transparent 45%),
+    radial-gradient(circle at 50% 50%, rgba(5, 150, 105, 0.15) 0%, transparent 55%),
+    radial-gradient(circle at 80% 80%, rgba(16, 185, 129, 0.18) 0%, transparent 50%),
+    radial-gradient(circle at 20% 85%, rgba(110, 231, 183, 0.20) 0%, transparent 45%);
   background-attachment: fixed;
-  color: #0f172a;
+  color: #064e3b;
   font-family: 'Outfit', sans-serif;
   min-height: 100vh;
 }
 
-/* Dark Theme Mode Option */
+/* Dark Theme Alive Green Mode Option */
 body.dark-theme {
-  background: #070d1e;
+  background: #041710;
   background-image: 
-    radial-gradient(circle at 10% 10%, rgba(59, 130, 246, 0.35) 0%, transparent 45%),
-    radial-gradient(circle at 90% 15%, rgba(139, 92, 246, 0.35) 0%, transparent 45%),
-    radial-gradient(circle at 50% 50%, rgba(6, 182, 212, 0.22) 0%, transparent 55%),
-    radial-gradient(circle at 80% 80%, rgba(236, 72, 153, 0.22) 0%, transparent 50%),
-    radial-gradient(circle at 20% 85%, rgba(16, 185, 129, 0.20) 0%, transparent 45%);
-  color: #f8fafc;
+    radial-gradient(circle at 10% 10%, rgba(16, 185, 129, 0.40) 0%, transparent 45%),
+    radial-gradient(circle at 90% 15%, rgba(52, 211, 153, 0.35) 0%, transparent 45%),
+    radial-gradient(circle at 50% 50%, rgba(5, 150, 105, 0.30) 0%, transparent 55%),
+    radial-gradient(circle at 80% 80%, rgba(16, 185, 129, 0.30) 0%, transparent 50%),
+    radial-gradient(circle at 20% 85%, rgba(110, 231, 183, 0.25) 0%, transparent 45%);
+  color: #ecfdf5;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -39,19 +39,19 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: -0.02em;
 }
 
-/* White & Glassmorphism Panel Cards */
+/* Alive Green Glassmorphism Panel Cards */
 .glass-panel {
-  background: rgba(255, 255, 255, 0.92);
+  background: rgba(255, 255, 255, 0.94);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(203, 213, 225, 0.8);
-  box-shadow: 0 10px 35px -5px rgba(15, 23, 42, 0.08), inset 0 1px 0 0 rgba(255, 255, 255, 1);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  box-shadow: 0 10px 35px -5px rgba(5, 150, 105, 0.12), inset 0 1px 0 0 rgba(255, 255, 255, 1);
 }
 
 body.dark-theme .glass-panel {
-  background: rgba(15, 23, 42, 0.88);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  box-shadow: 0 12px 45px -10px rgba(0, 0, 0, 0.6), inset 0 1px 0 0 rgba(255, 255, 255, 0.15);
+  background: rgba(6, 44, 30, 0.90);
+  border: 1px solid rgba(52, 211, 153, 0.25);
+  box-shadow: 0 12px 45px -10px rgba(0, 0, 0, 0.7), inset 0 1px 0 0 rgba(52, 211, 153, 0.2);
 }
 
 .glass-panel-hover {
@@ -60,22 +60,22 @@ body.dark-theme .glass-panel {
 
 .glass-panel-hover:hover {
   background: #ffffff;
-  border-color: rgba(59, 130, 246, 0.6);
+  border-color: rgba(16, 185, 129, 0.8);
   transform: translateY(-4px);
-  box-shadow: 0 20px 40px -10px rgba(59, 130, 246, 0.2);
+  box-shadow: 0 20px 45px -10px rgba(16, 185, 129, 0.35);
 }
 
 body.dark-theme .glass-panel-hover:hover {
-  background: rgba(30, 41, 59, 0.95);
-  border-color: rgba(99, 102, 241, 0.6);
-  box-shadow: 0 22px 50px -15px rgba(59, 130, 246, 0.4);
+  background: rgba(10, 61, 42, 0.95);
+  border-color: rgba(52, 211, 153, 0.8);
+  box-shadow: 0 22px 50px -15px rgba(16, 185, 129, 0.5);
 }
 
-/* Vibrant Badges */
+/* Alive Green Badges */
 .badge-verified {
-  background: linear-gradient(135deg, rgba(16, 185, 129, 0.15) 0%, rgba(5, 150, 105, 0.25) 100%);
-  color: #059669;
-  border: 1px solid rgba(52, 211, 153, 0.6);
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.2) 0%, rgba(5, 150, 105, 0.3) 100%);
+  color: #047857;
+  border: 1px solid rgba(16, 185, 129, 0.8);
 }
 
 body.dark-theme .badge-verified {
@@ -83,9 +83,9 @@ body.dark-theme .badge-verified {
 }
 
 .badge-revoked {
-  background: linear-gradient(135deg, rgba(239, 68, 68, 0.15) 0%, rgba(220, 38, 38, 0.25) 100%);
-  color: #dc2626;
-  border: 1px solid rgba(248, 113, 113, 0.6);
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.2) 0%, rgba(220, 38, 38, 0.3) 100%);
+  color: #b91c1c;
+  border: 1px solid rgba(239, 68, 68, 0.8);
 }
 
 body.dark-theme .badge-revoked {
@@ -93,9 +93,9 @@ body.dark-theme .badge-revoked {
 }
 
 .badge-in-progress {
-  background: linear-gradient(135deg, rgba(245, 158, 11, 0.15) 0%, rgba(217, 119, 6, 0.25) 100%);
-  color: #d97706;
-  border: 1px solid rgba(251, 191, 36, 0.6);
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.2) 0%, rgba(217, 119, 6, 0.3) 100%);
+  color: #b45309;
+  border: 1px solid rgba(245, 158, 11, 0.8);
 }
 
 body.dark-theme .badge-in-progress {
@@ -108,9 +108,9 @@ body.dark-theme .badge-in-progress {
   height: 9px;
 }
 ::-webkit-scrollbar-track {
-  background: #f1f5f9;
+  background: #dcfce7;
 }
 ::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
+  background: #34d399;
   border-radius: 6px;
 }
