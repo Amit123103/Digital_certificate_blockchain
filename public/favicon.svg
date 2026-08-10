@@ -1,0 +1,30 @@
+<svg width="64" height="64" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Shield Outline -->
+  <path
+    d="M50 8L18 22V46C18 67.5 31.8 87.2 50 93C68.2 87.2 82 67.5 82 46V22L50 8Z"
+    fill="#042f2e"
+    stroke="#10b981"
+    stroke-width="6"
+    stroke-linejoin="round"
+  />
+  <!-- Checkmark inside Shield -->
+  <path
+    d="M32 48L44 60L68 36"
+    stroke="#10b981"
+    stroke-width="8"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+  <!-- Interlocking Chain Link Overlay -->
+  <rect
+    x="32"
+    y="32"
+    width="36"
+    height="36"
+    rx="12"
+    transform="rotate(-45 50 50)"
+    stroke="#ffffff"
+    stroke-width="7"
+    fill="none"
+  />
+</svg>
