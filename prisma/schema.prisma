@@ -1,0 +1,132 @@
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id            String   @id @default(uuid())
+  walletAddress String   @unique
+  role          String   @default("CUSTOMER") // ADMIN, ISSUER, MANUFACTURER, DISTRIBUTOR, WAREHOUSE, RETAILER, CUSTOMER, DAO_MEMBER
+  name          String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+model Certificate {
+  id              String   @id @default(uuid())
+  certificateId   String   @unique
+  certificateHash String
+  productId       String
+  issuer          String
+  metadataURI     String?
+  issuedAt        DateTime @default(now())
+  revoked         Boolean  @default(false)
+  revokedAt       DateTime?
+  txHash          String?
+}
+
+model Product {
+  id                String   @id @default(uuid())
+  productId         String   @unique
+  name              String
+  description       String
+  manufacturer      String
+  certificateId     String
+  manufacturingDate DateTime @default(now())
+  currentOwner      String
+  status            String   @default("REGISTERED") // REGISTERED, IN_TRANSIT, WAREHOUSED, RETAIL, SOLD, TOKENIZED
+  metadataURI       String?
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+}
+
+model SupplyChainEvent {
+  id          String   @id @default(uuid())
+  productId   String
+  fromAddress String
+  toAddress   String
+  location    String
+  timestamp   DateTime @default(now())
+  status      String
+  notes       String?
+  txHash      String?
+}
+
+model NFT {
+  id          String   @id @default(uuid())
+  tokenId     Int      @unique
+  productId   String   @unique
+  owner       String
+  metadataURI String
+  mintedAt    DateTime @default(now())
+  txHash      String?
+}
+
+model MarketplaceListing {
+  id        String   @id @default(uuid())
+  listingId Int      @unique
+  tokenId   Int
+  seller    String
+  price     String   // Price in ETH or mUSD formatted string
+  active    Boolean  @default(true)
+  createdAt DateTime @default(now())
+  txHash    String?
+}
+
+model Loan {
+  id              String   @id @default(uuid())
+  loanId          Int      @unique
+  tokenId         Int
+  borrower        String
+  collateralValue String
+  borrowedAmount  String
+  interestRate    Int      @default(5) // Percentage e.g. 5%
+  startTime       DateTime @default(now())
+  repaid          Boolean  @default(false)
+  liquidated      Boolean  @default(false)
+  txHash          String?
+}
+
+model Proposal {
+  id           String   @id @default(uuid())
+  proposalId   Int      @unique
+  title        String
+  description  String
+  proposer     String
+  votesFor     String   @default("0")
+  votesAgainst String   @default("0")
+  votesAbstain String   @default("0")
+  startTime    DateTime @default(now())
+  endTime      DateTime
+  executed     Boolean  @default(false)
+  canceled     Boolean  @default(false)
+  txHash       String?
+}
+
+model Vote {
+  id         String   @id @default(uuid())
+  proposalId Int
+  voter      String
+  voteType   Int      // 0: AGAINST, 1: FOR, 2: ABSTAIN
+  weight     String
+  timestamp  DateTime @default(now())
+  txHash     String?
+
+  @@unique([proposalId, voter])
+}
+
+model Transaction {
+  id          String   @id @default(uuid())
+  txHash      String   @unique
+  type        String   // CERTIFICATE_REGISTER, PRODUCT_REGISTER, PRODUCT_TRANSFER, NFT_MINT, MARKETPLACE_LIST, MARKETPLACE_BUY, LOAN_CREATE, LOAN_REPAY, DAO_PROPOSAL, DAO_VOTE
+  fromAddress String
+  toAddress   String?
+  amount      String?
+  blockNumber Int?
+  timestamp   DateTime @default(now())
+  status      String   @default("CONFIRMED")
+}

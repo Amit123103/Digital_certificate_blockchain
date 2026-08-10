@@ -1,0 +1,26 @@
+# Node / Next.js
+node_modules/
+.next/
+out/
+build/
+
+# Hardhat
+artifacts/
+cache/
+typechain-types/
+
+# Database
+prisma/dev.db
+prisma/dev.db-journal
+*.sqlite
+
+# Environment variables
+.env
+.env.local
+.env.production
+
+# Logs & OS
+*.log
+npm-debug.log*
+.DS_Store
+Thumbs.db
